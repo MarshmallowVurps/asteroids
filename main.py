@@ -12,6 +12,7 @@ def main():
     dt = 0
     clock = pygame.time.Clock()
 
+    # Set player coordinance to be middle of screen
     x = SCREEN_WIDTH / 2
     y = SCREEN_HEIGHT / 2
     player = Player(x, y)
