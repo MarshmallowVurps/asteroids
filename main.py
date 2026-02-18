@@ -13,6 +13,10 @@ def main():
     clock = pygame.time.Clock()
 
     # Set player coordinance to be middle of screen
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
+
     x = SCREEN_WIDTH / 2
     y = SCREEN_HEIGHT / 2
     player = Player(x, y)
@@ -24,12 +28,13 @@ def main():
             if event.type == pygame.QUIT:
                 return
             
+        updatable.update(dt)
         screen.fill("black")
+        for i in drawable:
+            i.draw(screen)
         pygame.display.flip()
         dt = clock.tick(60)/1000
         print(f"{dt}")
-        player.update(dt)
-        player.draw(screen)
        
 
 
